@@ -77,7 +77,6 @@ namespace Bannerlord.LocalizationParser
                                         var span = text.AsSpan();
                                         if (IsTranslationString(in span))
                                             LocalizationStrings.Add(new(file.Name, text));
-
                                     }
                                     break;
                             }
