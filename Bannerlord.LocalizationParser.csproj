@@ -15,7 +15,7 @@
     <Authors>Aragas</Authors>
     <Description>Outputs all hardcoded localization strings in a Mount &amp; Blade II: Bannerlord directory.</Description>
     <PackageTags>bannerlord</PackageTags>
-    <ToolCommandName>getblmeta</ToolCommandName>
+    <ToolCommandName>bllocparser</ToolCommandName>
     <IsTool>true</IsTool>
     <PackAsTool>true</PackAsTool>
     <PackageProjectUrl>http://github.com/BUTR/Bannerlord.LocalizationParser</PackageProjectUrl>
