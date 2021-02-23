@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ConsoleApp10": {
+      "commandName": "Project",
+      "commandLineArgs": "--game-folder \"H:\\SteamLibrary\\steamapps\\common\\Mount & Blade II Bannerlord\" --output LocalizationStrings.csv"
+    }
+  }
+}
