@@ -13,7 +13,7 @@
     <Product>Bannerlord Localization Parser</Product>
     <Title>Bannerlord Localization Parser</Title>
     <PackageOutputPath>./packages</PackageOutputPath>
-    <Copyright>Copyright © 2021 Aragas</Copyright>
+    <Copyright>Copyright © 2021 Bannerlord's Unofficial Tools & Resources</Copyright>
     <Authors>Aragas</Authors>
     <Description>Outputs all hardcoded localization strings in a Mount &amp; Blade II: Bannerlord directory.</Description>
     <PackageTags>bannerlord</PackageTags>
