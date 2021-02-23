@@ -5,7 +5,7 @@
 2. Run `dotnet tool install --global Bannerlord.LocalizationParser` to install the tool.
 
 ## Usage
-To run, use `Bannerlord.LocalizationParser --game-folder "H:\\SteamLibrary\\steamapps\\common\\Mount & Blade II Bannerlord" --output LocalizationStrings.csv`
+To run, use `bllocparser --game-folder "H:\\SteamLibrary\\steamapps\\common\\Mount & Blade II Bannerlord" --output LocalizationStrings.csv`
 
 ## Output
 It will output a .csv file with the following format:
