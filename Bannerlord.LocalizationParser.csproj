@@ -5,6 +5,22 @@
     <TargetFramework>net5.0</TargetFramework>
     <LangVersion>9.0</LangVersion>
     <Nullable>enable</Nullable>
+    
+    <PackageId>Bannerlord.LocalizationParser</PackageId>
+    <Product>Bannerlord Localization Parser</Product>
+    <Title>Bannerlord Localization Parser</Title>
+    <Version>1.0.0</Version>
+    <PackageOutputPath>./nupkg</PackageOutputPath>
+    <Copyright>Copyright © 2021 Aragas</Copyright>
+    <Authors>Aragas</Authors>
+    <Description>Outputs all hardcoded localization strings in a Mount &amp; Blade II: Bannerlord directory.</Description>
+    <PackageTags>bannerlord</PackageTags>
+    <ToolCommandName>getblmeta</ToolCommandName>
+    <IsTool>true</IsTool>
+    <PackAsTool>true</PackAsTool>
+    <PackageProjectUrl>http://github.com/BUTR/Bannerlord.LocalizationParser</PackageProjectUrl>
+    <RepositoryUrl>http://github.com/BUTR/Bannerlord.LocalizationParser</RepositoryUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
