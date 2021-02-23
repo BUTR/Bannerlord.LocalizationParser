@@ -44,8 +44,24 @@ namespace Bannerlord.LocalizationParser
 
             Console.WriteLine("Parsing {0}", file.FullName);
 
-            using var module  = new PEFile(file.FullName, peReader);
+            using var module = new PEFile(file.FullName, peReader);
             var metadata = module.Reader.GetMetadataReader(MetadataReaderOptions.None);
+            foreach (var fieldDefinitionHandle in metadata.FieldDefinitions)
+            {
+                var fieldDefinition = metadata.GetFieldDefinition(fieldDefinitionHandle);
+                if (!fieldDefinition.HasFlag(System.Reflection.FieldAttributes.Literal))
+                    continue;
+                var constantHandle = fieldDefinition.GetDefaultValue();
+                if (constantHandle.IsNil)
+                    continue;
+                var constant = metadata.GetConstant(constantHandle);
+                if (constant.TypeCode != ConstantTypeCode.String)
+                    continue;
+                var blob = metadata.GetBlobReader(constant.Value);
+                var text = blob.ReadConstant(constant.TypeCode) as string;
+                if (IsTranslationString(text))
+                    LocalizationStrings.Add(new(file.Name, text));
+            }
             foreach (var methodDefinitionHandle in metadata.MethodDefinitions)
             {
                 var methodDefinition = metadata.GetMethodDefinition(methodDefinitionHandle);
@@ -74,8 +90,7 @@ namespace Bannerlord.LocalizationParser
                                     }
                                     if (text != null)
                                     {
-                                        var span = text.AsSpan();
-                                        if (IsTranslationString(in span))
+                                        if (IsTranslationString(text))
                                             LocalizationStrings.Add(new(file.Name, text));
                                     }
                                     break;
