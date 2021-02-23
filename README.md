@@ -1,7 +1,7 @@
 # Bannerlord.LocalizationParser
 
 ## Installation
-1. Install the latest [.NET 5.0 Runtime](https://dot.net).
+1. Install the latest [.NET 5.0 Runtime](https://dotnet.microsoft.com/download/dotnet/5.0/runtime).
 2. Run `dotnet tool install --global Bannerlord.LocalizationParser` to install the tool.
 
 ## Usage
