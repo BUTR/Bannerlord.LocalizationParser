@@ -17,8 +17,8 @@ env:
   DOTNET_CLI_TELEMETRY_OPTOUT: true
 
 jobs:
-  build-and-publish:
-    name: Build and Publish
+  build-and-publish-as-tool:
+    name: Build and Publish as Tool
     runs-on: ubuntu-latest
     steps:
     - name: 'Checkout'
@@ -53,3 +53,88 @@ jobs:
              curl -vX PUT -u "vslee:${{secrets.GITHUB_TOKEN}}" -F package=@$f https://nuget.pkg.github.com/BUTR/
            done
       shell: bash
+
+  build-and-publish-executables-release:
+    name: Build and Publish Executables - Create Github Release
+    if: contains(github.ref, 'tags/v')
+    runs-on: ubuntu-latest
+    steps:
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1.0.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release ${{ github.ref }}
+        draft: false
+        prerelease: false
+    - name: Output Release URL File
+      run: echo "${{ steps.create_release.outputs.upload_url }}" > release_url.txt
+    - name: Save Release URL File for publish
+      uses: actions/upload-artifact@v1
+      with:
+        name: release_url
+        path: release_url.txt
+
+  build-and-publish-executables:
+    name: Build and Publish Executables
+    if: contains(github.ref, 'tags/v')
+    needs: [build-and-publish-executables-release]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: ["win-x64", "win-x86", "linux-x64", "win-arm", "linux-arm"]
+        self_contained: ["true", "false"]
+    steps:
+    - name: 'Checkout'
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@master
+      with:
+        dotnet-version: 5.0.x
+
+    - name: Setup BUTR GPR
+      uses: actions/setup-dotnet@master
+      with:
+        source-url: https://nuget.pkg.github.com/BUTR/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+    - name: Publish
+      run: >-
+        dotnet publish src/Bannerlord.LocalizationParser/Bannerlord.LocalizationParser.csproj `
+          -c Release `
+          -o ./output `
+          -r ${{matrix.platform}} `
+          --self-contained ${{matrix.self_contained}} `
+          -p:PublishReadyToRun=true `
+          -p:PublishReadyToRunShowWarnings=true `
+          -p:PublishSingleFile=true `
+          -p:IncludeNativeLibrariesForSelfExtract=true `
+          -p:DebugType=embedded;
+      shell: pwsh
+      
+    - name: Get Release File Name & Upload URL
+      id: get_release_info
+      run: |
+        echo ::set-output name=file_name::${REPOSITORY_NAME##*/}-${TAG_REF_NAME##*/v} # RepositoryName-v1.0.0
+        value=`cat release_url/release_url.txt`
+        echo ::set-output name=upload_url::$value
+      env:
+        TAG_REF_NAME: ${{ github.ref }}
+        REPOSITORY_NAME: ${{ github.repository }}
+      
+    - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.get_release_info.outputs.upload_url }}
+        asset_path: ./output
+        asset_name: ${{ steps.get_release_info.outputs.file_name }}-${{matrix.platform}}-${{matrix.self_contained ? 'self-contained' : 'requires-dotnet5'}}.zip
+        asset_content_type: application/zip

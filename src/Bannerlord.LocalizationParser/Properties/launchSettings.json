@@ -3,6 +3,10 @@
     "Bannerlord.LocalizationParser": {
       "commandName": "Project",
       "commandLineArgs": "--game-folder \"H:\\SteamLibrary\\steamapps\\common\\Mount & Blade II Bannerlord\" --output LocalizationStrings.csv"
+    },
+    "Bannerlord.LocalizationParser1": {
+      "commandName": "Project",
+      "commandLineArgs": ""
     }
   }
 }
