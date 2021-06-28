@@ -135,6 +135,11 @@ jobs:
           -p:DebugType=embedded;
       shell: pwsh
       
+      - uses: papeloto/action-zip@v1
+        with:
+          files: ./output
+          dest: output.zip
+      
     - name: Upload Release Asset
       id: upload-release-asset 
       uses: actions/upload-release-asset@v1.0.1
@@ -142,7 +147,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.get_release_info.outputs.upload_url }}
-        asset_path: ./output
+        asset_path: ./output.zip
         # fake ternary
         asset_name: ${{ steps.get_release_info.outputs.file_name }}-${{ matrix.platform }}-${{ matrix.self_contained != 'false' && 'self-contained' || 'requires-dotnet5' }}.zip
         asset_content_type: application/zip
