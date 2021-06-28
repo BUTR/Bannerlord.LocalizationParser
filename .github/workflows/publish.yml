@@ -149,5 +149,5 @@ jobs:
         upload_url: ${{ steps.get_release_info.outputs.upload_url }}
         asset_path: ./output.zip
         # fake ternary
-        asset_name: ${{ steps.get_release_info.outputs.file_name }}-${{ matrix.platform }}-${{ matrix.self_contained != 'false' && 'self-contained' || 'requires-dotnet5' }}.zip
+        asset_name: ${{ steps.get_release_info.outputs.file_name }}${{ matrix.self_contained != 'false' && '-self-contained' || '' }}-${{ matrix.platform }}.zip
         asset_content_type: application/zip
