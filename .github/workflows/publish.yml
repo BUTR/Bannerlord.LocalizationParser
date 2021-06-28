@@ -113,8 +113,8 @@ jobs:
           -o ./output `
           -r ${{matrix.platform}} `
           --self-contained ${{matrix.self_contained}} `
-          -p:PublishReadyToRun=true `
-          -p:PublishReadyToRunShowWarnings=true `
+          -p:PublishReadyToRun=false `
+          -p:PublishReadyToRunShowWarnings=false `
           -p:PublishSingleFile=true `
           -p:IncludeNativeLibrariesForSelfExtract=true `
           -p:DebugType=embedded;
