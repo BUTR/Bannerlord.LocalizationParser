@@ -39,7 +39,7 @@ jobs:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
     - name: Pack
-      run: dotnet pack Bannerlord.LocalizationParser.csproj -c Release -o ./packages
+      run: dotnet pack src/Bannerlord.LocalizationParser/Bannerlord.LocalizationParser.csproj -c Release -o ./packages
       shell: pwsh
 
     - name: Push to NuGet
