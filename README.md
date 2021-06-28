@@ -28,4 +28,4 @@ It will output a .csv file with the following format:
 |TaleWorlds.CampaignSystem.dll|{=0M6ApEr2}Surely you know that {FIRST_NAME} is {RELATIONSHIP} as well as my liege, and will always be able to count on my loyalty.|
 
 ## Examples
-The tool has two run modes - you either pass to the too a path to a valid installation of M&B2: Bannerlord, where it extracs every vanilla game string, or you pass apath to a directory that contains some .dll's, all of them will be parsed.
+The tool has two run modes - you either pass to the too a path to a valid installation of M&B2: Bannerlord, where it extracts every vanilla game string, or you pass a path to a directory that contains some .dll's, all of them will be parsed.
