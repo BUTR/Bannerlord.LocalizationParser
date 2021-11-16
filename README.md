@@ -2,7 +2,7 @@
 
 ## Using as a dotnet Tool
 ### Installation
-1. Install the latest [.NET 5.0 Runtime](https://dotnet.microsoft.com/download/dotnet/5.0/runtime).
+1. Install the latest [.NET 6.0 Runtime](https://dotnet.microsoft.com/download/dotnet/6.0/runtime).
 2. Run `dotnet tool install --global Bannerlord.LocalizationParser` to install the tool.
 
 ### Usage
@@ -12,7 +12,7 @@ You can also just run the executable without arguments to run it in interactive 
 ## Using as a Standalone Executable
 ### Installation
 1. Download the latest [release](https://github.com/BUTR/Bannerlord.LocalizationParser/releases/latest).
-2. If a non `self-contained` executable is downloaded, install the latest [.NET 5.0 Runtime](https://dotnet.microsoft.com/download/dotnet/5.0/runtime).
+2. If a non `self-contained` executable is downloaded, install the latest [.NET 6.0 Runtime](https://dotnet.microsoft.com/download/dotnet/6.0/runtime).
 3. Extract the file somewhere.
 
 ### Usage
