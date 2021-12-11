@@ -1,9 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31005.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bannerlord.LocalizationParser", "Bannerlord.LocalizationParser\Bannerlord.LocalizationParser.csproj", "{E72337C6-9235-424E-9842-41A630F3CCEA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{42FC49EC-76A3-4D13-88DC-D1AEEF75B690}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{016F4315-36E1-40B4-84BC-DD33C2F2FA74}"
+	ProjectSection(SolutionItems) = preProject
+		..\build\common.props = ..\build\common.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +25,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E72337C6-9235-424E-9842-41A630F3CCEA} = {42FC49EC-76A3-4D13-88DC-D1AEEF75B690}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {64053D0E-D768-4336-AEFC-38D4882A6ADD}

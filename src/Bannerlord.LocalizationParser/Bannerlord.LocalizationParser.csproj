@@ -9,21 +9,30 @@
     <GITHUB_RUN_NUMBER Condition="$(GITHUB_RUN_NUMBER) == ''">0</GITHUB_RUN_NUMBER>
     <Version>1.1.0.$(GITHUB_RUN_NUMBER) </Version>
 
-    <PackageId>Bannerlord.LocalizationParser</PackageId>
-    <Product>Bannerlord Localization Parser</Product>
-    <Title>Bannerlord Localization Parser</Title>
-    <PackageOutputPath>./packages</PackageOutputPath>
-    <Copyright>Copyright © 2021 Bannerlord's Unofficial Tools &amp; Resources</Copyright>
-    <Authors>Aragas</Authors>
-    <Description>Outputs all hardcoded localization strings in a Mount &amp; Blade II: Bannerlord directory.</Description>
-    <PackageTags>bannerlord</PackageTags>
     <ToolCommandName>bllocparser</ToolCommandName>
     <IsTool>true</IsTool>
     <PackAsTool>true</PackAsTool>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Bannerlord.LocalizationParser</PackageId>
+    <PackageVersion>$(Version)</PackageVersion>
+    <Title>Bannerlord Localization Parser</Title>
+    <Authors>Aragas</Authors>
+    <Company>BUTR</Company>
+    <Description>Outputs all hardcoded localization strings in a Mount &amp; Blade II: Bannerlord directory.</Description>
+    <Copyright>Copyright © 2021 Bannerlord's Unofficial Tools &amp; Resources</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>http://github.com/BUTR/Bannerlord.LocalizationParser</PackageProjectUrl>
     <RepositoryUrl>http://github.com/BUTR/Bannerlord.LocalizationParser</RepositoryUrl>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>bannerlord</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.8.0" />
