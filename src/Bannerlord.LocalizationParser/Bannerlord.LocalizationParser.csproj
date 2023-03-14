@@ -38,7 +38,7 @@
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
     <PackageReference Include="CsvHelper" Version="30.0.1" />
     <PackageReference Include="ICSharpCode.Decompiler" Version="7.2.1.6856" />
-    <PackageReference Include="System.Reflection.Metadata" Version="6.0.1" />
+    <PackageReference Include="System.Reflection.Metadata" Version="7.0.1" />
   </ItemGroup>
 
 </Project>
